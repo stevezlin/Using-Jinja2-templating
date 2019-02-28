@@ -1,2 +1,2 @@
-# Using-Jinja2-templating
-Using Jinja2 to generate webpages
+# week 3 hw
+using functions and loops to combine and run through lists
