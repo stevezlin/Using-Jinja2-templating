@@ -24,14 +24,53 @@ pages.append({
 	"title": "index",
 	"output": "docs/index.html",
 	
-	"filename": "content/projects.html",
-	"title": "projects",
-	"output": "docs/projects.html",
-	
-	"filename": "content/contact.html",
-	"title": "contact",
-	"output": "docs/contact.html",
 })
 
 print(pages)
-	
+
+
+#phase 2.2.2
+
+
+
+from jinja2 import Template
+index_html = open("content/index.html").read()
+
+template_html = open("templates/base.html").read()
+template = Template(template_html)
+template.render(
+	title="Homepage",
+	content=index_html,
+)
+
+print('phase 2.2.2 completed')
+
+#phase 2.3.1
+
+{% for page in pages %}
+<a href="{{ page.output_filename }}">{{ page.title }}</a>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
