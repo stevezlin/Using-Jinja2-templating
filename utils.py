@@ -6,32 +6,40 @@ from jinja2 import Template
 
 
 
+pages = []
 
 print ('Using functions and loops to combine pages')
 
 # read all HTML files using ( glob and os)
 def create_pages():
-		all_html_files = glob.glob("content/*.html")
-		print(all_html_files)
-		
-		for file in all_html_files:
-			file_path = file 
-			file_name = os.path.basename(file_path)
-			name_only, extension = os.path.splitext(file_name)
-			print(file_name)
-			
-			pages = []
-			pages.append({
+    all_html_files = glob.glob("content/*.html")
+    print(all_html_files)
+    
+    for file in all_html_files:
+        file_path = file 
+        file_name = os.path.basename(file_path)
+        name_only, extension = os.path.splitext(file_name)
+        print(file_name)
+
+        pages.append({
             "filename": each,
             "title": name_only,
             "output": "docs/" + name_only + '.html',
             "link": name_only + '.html',
             "output_filepath": 'docs/' + name_only + '.html'
-			})
-		
+        })
+
+    print('end of create_pages')
+    print('----------------------------')
+    print(pages)
+    print('----------------------------')
 
 def apply_template():
 
+    print('apply_template')
+    print('----------------------------')
+    print(pages)
+    print('----------------------------')
     for page in pages:
         file_path = page['filename']
         index_html = open(file_path).read()
@@ -41,16 +49,4 @@ def apply_template():
             pages = pages,
             selected = page["output_filename"]
         )
-		open(page['output'], "w+").write(page_html)
-
-
-
-
-
-
-	
-
-
-
-
-
+    open(page['output'], "w+").write(page_html)	
